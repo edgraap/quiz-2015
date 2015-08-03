@@ -4,8 +4,6 @@ var path = require('path');
 // SQLite   DATABASE_URL = sqlite://:@:/
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name = (url[6]||null);
-var user = (url[2]||null);
-var pwd = (url[3]||null);
 var protocol = (url[1]||null);
 var dialect = (url[1]||null);
 var port = (url[5]||null);
@@ -50,7 +48,7 @@ sequelize.sync().then(function() {
 	Quiz.count().then(function(count) {
 		if (count === 0) {
 			// Inicializar la tabla solo si está vacía
-			Quiz.create({pregunta: 'Programa estrella de cocina en la RTVE'
+			Quiz.create({pregunta: 'Programa estrella de cocina en la RTVE',
 						 respuesta: 'Masterchef',
 						 tema: 'ocio'
 						});
